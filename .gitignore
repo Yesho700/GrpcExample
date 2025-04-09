@@ -1,0 +1,12 @@
+# Common ignores
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+
+# NestJS specific
+*.cache
+coverage/
+*.tmp
+*.bak
