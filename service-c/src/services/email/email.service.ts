@@ -11,8 +11,8 @@ export class EmailService implements OnModuleInit{
     this.transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "31882cs@gmail.com",
-        pass: "axjv nzfq mslm wmet"
+        user: "Email",
+        pass: "Password"
       },
     });
   }
