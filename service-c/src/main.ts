@@ -13,6 +13,21 @@ async function bootstrap() {
     }
   })
 
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.KAFKA,
+    options: {
+
+      client:{
+        brokers:["localhost:29092"]
+      },
+
+      consumer:{
+        groupId: 'group-email'
+      }
+      
+    }
+  })
+
 
   await app.startAllMicroservices();
   await app.listen(process.env.PORT ?? 3002);

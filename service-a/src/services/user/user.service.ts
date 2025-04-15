@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
-import { firstValueFrom, lastValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { MessageRes, MessasgeReq } from 'src/interfaces/user.interface';
 import { EmailService } from '../email/email.service';
 
@@ -26,7 +26,8 @@ export class UserService implements OnModuleInit {
     async getUser(userId: string){
         let responseData = await firstValueFrom(this.userClient.GetUser({userId}));
         console.log(responseData)
-        await this.emailService.sendEmail(responseData.email);
+        await this.emailService.sendEmailByGrpc(responseData.email);
+        await this.emailService.sendEmailByKafka(responseData.email);
     }
 
 }

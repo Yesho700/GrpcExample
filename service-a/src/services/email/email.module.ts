@@ -14,7 +14,24 @@ import { EmailService } from './email.service';
           protoPath: 'src/proto/email.proto',
           url:"localhost:5002"
         }
+      },
+
+      {
+        name: "KAFKA_SERVICE",
+        transport: Transport.KAFKA,
+        options: {
+
+          client: {
+            brokers: ['localhost:29092', 'kafka:9092', 'host.docker.internal:9092']
+          },
+          
+          producer: {
+            allowAutoTopicCreation: true
+          }
+          
+        }
       }
+
     ])
   ],
   providers: [EmailService],
